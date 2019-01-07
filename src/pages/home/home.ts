@@ -20,4 +20,11 @@ pokemons:[Pokemon]
 
   }
 
+  showPokDetail(pok:Pokemon){
+
+this.navCtrl.push('PokemonDetailPage',{pok})
+
+  }
+
+
 }
