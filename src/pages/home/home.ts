@@ -1,3 +1,4 @@
+import { PokemonApiProvider } from './../../providers/pokemon-api/pokemon-api';
 import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
 
@@ -7,7 +8,21 @@ import { NavController } from 'ionic-angular';
 })
 export class HomePage {
 
-  constructor(public navCtrl: NavController) {
+pokemons=[]
+
+
+  constructor(public navCtrl: NavController, pokApi: PokemonApiProvider) {
+
+
+    // Create observer object
+    const myObserver = {
+
+      next: res => this.pokemons = res['results'],
+      error: err => console.error('Observer got an error: ' + err),
+      complete: () => console.log('Observer got a complete notification'),
+    };
+
+    pokApi.getPokemons().subscribe(myObserver);
 
   }
 
