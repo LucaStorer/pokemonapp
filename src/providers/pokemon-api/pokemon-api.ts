@@ -1,4 +1,4 @@
-import { IPokemonDetails } from './../../models/pokemon.details';
+import { IPokemonDetails } from '../../models/pokemon-details';
 import { IPokemonData } from './../../models/pokemon-data';
 import { IpokemonResults } from './../../models/pokemon-results';
 import { HttpClient } from '@angular/common/http';
@@ -15,7 +15,8 @@ import { Observable } from 'rxjs/Observable';
 @Injectable()
 export class PokemonApiProvider {
 
-pokUrl = "https://pokeapi.co/api/v2/pokemon/?limit=1000"
+pokUrl = "https://pokeapi.co/api/v2/pokemon/"
+private limit = 10
 
   constructor(public http: HttpClient) {
     console.log('Hello PokemonApiProvider Provider');
@@ -23,7 +24,7 @@ pokUrl = "https://pokeapi.co/api/v2/pokemon/?limit=1000"
 
 getPokemons():Observable<Pokemon[]>{
 
-return this.http.get<IpokemonResults>(this.pokUrl).pipe(
+return this.http.get<IpokemonResults>(this.pokUrl + '?limit=' + this.limit).pipe(
 
     map((res:IpokemonResults) => res.results),
 
@@ -36,7 +37,7 @@ return this.http.get<IpokemonResults>(this.pokUrl).pipe(
 
 getPokemonDetails(pok: Pokemon): Observable<IPokemonDetails>{
 
-  return this.http.get<IPokemonDetails>(this.pokUrl + pok.id)
+  return this.http.get<IPokemonDetails>(this.pokUrl + pok.id +'/')
 
 }
 
