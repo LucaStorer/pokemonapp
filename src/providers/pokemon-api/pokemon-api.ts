@@ -1,5 +1,7 @@
+import { IpokemonResults } from './../../models/pokemon-results';
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { Observable } from 'rxjs/Observable';
 
 /*
   Generated class for the PokemonApiProvider provider.
@@ -16,9 +18,9 @@ pokUrl = "https://pokeapi.co/api/v2/pokemon/?limit=1000"
     console.log('Hello PokemonApiProvider Provider');
   }
 
-getPokemons(){
+getPokemons():Observable<IpokemonResults>{
 
-return this.http.get(this.pokUrl)
+return this.http.get<IpokemonResults>(this.pokUrl)
 
 }
 

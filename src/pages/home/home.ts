@@ -1,6 +1,8 @@
+import { IPokemonData } from './../../models/pokemon-data';
 import { PokemonApiProvider } from './../../providers/pokemon-api/pokemon-api';
 import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
+import { IpokemonResults } from '../../models/pokemon-results';
 
 @Component({
   selector: 'page-home',
@@ -8,7 +10,7 @@ import { NavController } from 'ionic-angular';
 })
 export class HomePage {
 
-pokemons=[]
+pokemons:[IPokemonData]
 
 
   constructor(public navCtrl: NavController, pokApi: PokemonApiProvider) {
@@ -17,7 +19,7 @@ pokemons=[]
     // Create observer object
     const myObserver = {
 
-      next: res => this.pokemons = res['results'],
+      next: (res:IpokemonResults )=> this.pokemons = res.results,
       error: err => console.error('Observer got an error: ' + err),
       complete: () => console.log('Observer got a complete notification'),
     };
