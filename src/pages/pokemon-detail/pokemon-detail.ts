@@ -20,12 +20,12 @@ import { Observable } from 'rxjs/Observable';
 export class PokemonDetailPage {
 
 pok: Pokemon
-pokdetails$: Observable <IPokemonDetails>
+pokdetails:  IPokemonDetails
 
   constructor(public navCtrl: NavController, public navParams: NavParams,private pokApi: PokemonApiProvider) {
 
 this.pok=navParams.get('pok');
-this.pokdetails$= pokApi.getPokemonDetails(this.pok)
+this.pokdetails= navParams.get('pokDetail')
 
 
 
