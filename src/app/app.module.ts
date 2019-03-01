@@ -23,7 +23,10 @@ import { HttpClientModule } from '@angular/common/http';
   ],
   imports: [
     BrowserModule,
-    IonicModule.forRoot(MyApp),
+    IonicModule.forRoot(MyApp, {
+      iconMode: "ios",
+      tabsPlacement: 'top'
+    }),
     HttpClientModule
   ],
   bootstrap: [IonicApp],

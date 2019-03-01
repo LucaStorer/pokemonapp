@@ -7,5 +7,28 @@
 </ion-header>
 
 <ion-content padding>
+  <h1>VETRINA</h1>
+
+
+  <ion-row responsive-sm wrap>
+    <ion-col *ngFor="let b of booksLib">
+
+      <ion-card>
+
+        <ion-card-header>
+         {{b.Title}}
+        </ion-card-header>
+
+        <ion-card-content>
+          <!-- Add card content here! -->
+          <img src={{b.imgUrl}} (click)="showBookDetail(b)"/>
+
+        </ion-card-content>
+
+
+      </ion-card>
+
+    </ion-col>
+  </ion-row>
 
 </ion-content>

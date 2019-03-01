@@ -1,3 +1,26 @@
 page-about {
 
+
+
+
+  /*fix for ios*/
+  @media (max-width: 476px) {
+    ion-content.content-ios{
+      ion-row[wrap] {
+        ion-col {
+          flex-basis: 100%;
+        }
+      }
+    }
+  }
+  @media (max-width: 768px) {
+    ion-content.content-ios{
+      ion-row[wrap] {
+        ion-col {
+          flex-basis: 50%;
+        }
+      }
+    }
+  }
+
 }
